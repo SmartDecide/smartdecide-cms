@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "title": {
+    "author": {
       "type": "string"
     },
     "body": {
