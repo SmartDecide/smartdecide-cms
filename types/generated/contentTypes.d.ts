@@ -537,6 +537,50 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMetadataMetadata extends Struct.CollectionTypeSchema {
+  collectionName: 'metadatas';
+  info: {
+    displayName: 'Metadata';
+    pluralName: 'metadatas';
+    singularName: 'metadata';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    colorScheme: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    creator: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    icons: Schema.Attribute.JSON;
+    keywords: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::metadata.metadata'
+    > &
+      Schema.Attribute.Private;
+    metadataBase: Schema.Attribute.String;
+    openGraph: Schema.Attribute.JSON;
+    page: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    publisher: Schema.Attribute.String;
+    robots: Schema.Attribute.JSON;
+    tags: Schema.Attribute.String;
+    themeColor: Schema.Attribute.JSON;
+    title: Schema.Attribute.String;
+    twitter: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    verification: Schema.Attribute.JSON;
+    viewport: Schema.Attribute.String;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1051,6 +1095,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::metadata.metadata': ApiMetadataMetadata;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
