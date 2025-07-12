@@ -21,20 +21,7 @@ module.exports = createCoreController("api::article.article", ({ strapi }) => ({
 
     const blog = entries[0];
 
-    ctx.body = {
-      id: blog?.id,
-      title: blog?.title,
-      slug: blog?.slug,
-      description: blog?.description,
-      content: blog?.blocks,
-      tags: blog?.tags,
-      cover: {
-        url: blog?.cover?.url,
-        alt: blog?.cover?.alternativeText,
-        caption: blog?.cover?.caption,
-      },
-      publishedOn: blog?.publishedOn,
-    };
+    ctx.body = blog;
   },
   async findAllBlogs(ctx) {
     const { page = 1, pageSize = 10 } = ctx.query;
