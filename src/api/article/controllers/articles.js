@@ -12,7 +12,7 @@ module.exports = createCoreController("api::article.article", ({ strapi }) => ({
         filters: { slug },
         populate: ["cover", "author", "category", "blocks"],
       }
-    );
+    ); 
 
     if (!entries || entries.length === 0) {
       return ctx.notFound("Blog not found");
