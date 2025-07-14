@@ -5,13 +5,12 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::article.article", ({ strapi }) => ({
   async findBySlug(ctx) {
     const { slug } = ctx.params;
-    console.log();
 
     const entries = await strapi.entityService.findMany(
       "api::article.article",
       {
         filters: { slug },
-        populate: ["cover"],
+        populate: ["cover", "author", "category", "blocks"],
       }
     );
 
