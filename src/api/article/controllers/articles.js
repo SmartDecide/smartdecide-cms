@@ -32,7 +32,8 @@ module.exports = createCoreController("api::article.article", ({ strapi }) => ({
       "api::article.article",
       {
         populate: ["cover"],
-        fields: ["title", "slug"], // optional optimization
+        fields: ["title", "slug", "createdAt"], // optional optimization
+        sort: [{ createdAt: "desc" }], // sort newest first
         start,
         limit,
       }
@@ -46,6 +47,7 @@ module.exports = createCoreController("api::article.article", ({ strapi }) => ({
         id: blog?.id,
         title: blog?.title,
         slug: blog?.slug,
+        createdAt: blog?.createdAt,
         cover: {
           url: blog?.cover?.url,
           alt: blog?.cover?.alternativeText,
